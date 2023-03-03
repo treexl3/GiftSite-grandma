@@ -1,0 +1,176 @@
+body {
+   margin: 0;
+   background: #fdfdfd;
+   overflow: hidden;
+   perspective: 1000px;
+
+   font-family: "Caveat", cursive;
+}
+
+.dot {
+   width: 35px;
+   height: 35px;
+   position: absolute;
+   background: url("../img/heart.png");
+   background-size: 100% 100%;
+}
+
+html,
+body {
+   width: 100%;
+   height: 100%;
+}
+@media (max-width: 767px) {
+   html {
+      height: 130%;
+      overflow: auto;
+   }
+}
+
+.heart {
+   width: 100%;
+   height: 100%;
+}
+
+.card {
+   width: 800px;
+   height: 500px;
+   padding: 15px 30px;
+   overflow: hidden;
+
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   top: -50%;
+   left: 50%;
+   z-index: 1;
+
+   transform-style: preserve-3d;
+   perspective: 100px;
+   opacity: 0;
+   box-shadow: 20px 10px 10px rgba(0, 0, 0, 0.1);
+   border-radius: 20px;
+
+   transform: translate3d(-40%, -50%, 0) rotateY(30deg);
+   animation: card 2s linear 2s forwards;
+}
+@media (max-width: 992px) {
+   .card {
+      width: 600px;
+      height: 450px;
+   }
+}
+@media (max-width: 767px) {
+   .card {
+      width: auto;
+      height: auto;
+   }
+}
+@keyframes card {
+   from {
+      opacity: 0;
+   }
+   to {
+      opacity: 1;
+   }
+}
+.card::before {
+   content: "";
+   position: absolute;
+   width: 400px;
+   height: 190%;
+   background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8) border-box;
+   animation: animate 5s linear infinite;
+}
+@media (max-width: 767px) {
+   .card::before {
+      width: 800px;
+      height: 80%;
+   }
+}
+@media (max-width: 510px) {
+   .card::before {
+      width: 650px;
+      height: 80%;
+   }
+}
+@media (max-width: 430px) {
+   .card::before {
+      width: 300px;
+      height: 140%;
+   }
+}
+.card::after {
+   content: "";
+   position: absolute;
+   background-color: #fff;
+   inset: 4px;
+   border-radius: 16px;
+}
+@keyframes animate {
+   0% {
+      transform: rotate(0deg);
+   }
+   100% {
+      transform: rotate(360deg);
+   }
+}
+
+.title {
+   margin-bottom: 10px;
+
+   position: relative;
+   z-index: 5;
+
+   background: linear-gradient(229deg, #feac5e, #c779d0, #4bc0c8);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+
+   color: #418dff;
+   font-size: 80px;
+   line-height: 1;
+}
+@media (max-width: 767px) {
+   .title {
+      font-size: 50px;
+   }
+}
+
+.text {
+   margin-bottom: 50px;
+   padding-bottom: 5px;
+   align-self: flex-start;
+
+   position: relative;
+   z-index: 5;
+
+   background-image: linear-gradient(110deg, #333 55%, #ccc 100%);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+
+   color: #333;
+   font-size: 35px;
+   line-height: 1.2;
+}
+@media (max-width: 767px) {
+   .text {
+      font-size: 32px;
+      line-height: 1;
+   }
+}
+
+.author {
+   position: relative;
+   z-index: 5;
+   align-self: flex-end;
+
+   background: #0066b2;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   opacity: 0;
+   color: #121212;
+   font-size: 40px;
+   transition: opacity 1s linear;
+}
